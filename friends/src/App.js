@@ -13,13 +13,13 @@ function App() {
         <Link to="/login">Login</Link>
         <Link to="/friendster">Friendster</Link>
       </header>
-      <body>
+      <div>
         <Switch>
           <PrivateRoute exact path="/friendster" component={Friendster} />
           <Route path="/login" component={Login} />
           <Route component={Login} />
         </Switch>
-      </body>
+      </div>
     </Router>
   );
 }
