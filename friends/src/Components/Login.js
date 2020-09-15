@@ -7,8 +7,9 @@ const initialValue = {
 };
 
 export default function Login(props) {
-  const [credentials, setCredentials] = useState(initialValue);
-  const [error, setError] = useState("");
+  const [ credentials, setCredentials ] = useState(initialValue);
+  // const [ isLoading, setIsLoading ] = useState(false);
+  const [ error, setError ] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -27,7 +28,10 @@ export default function Login(props) {
         localStorage.setItem('token', res.data.payload);
         
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        console.error(err);
+        setError(err.response.data.error);
+      });
   };
 
   return (
@@ -48,6 +52,7 @@ export default function Login(props) {
         />
         <button>Log in</button>
       </form>
+      {error.length > 0 ? <p className={'error-message'}>{error}</p> : null}
     </div>
   );
 }
