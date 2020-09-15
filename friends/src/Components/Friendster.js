@@ -27,7 +27,7 @@ export default function Friendster(props) {
       <FriendForm getFriends={getFriends} />
       <br></br>
       {friends.map((fr) => {
-        return <Friend key={fr.id} data={fr} />;
+        return <Friend key={fr.id} data={fr} getFriends={getFriends} />;
       })}
     </div>
   );
