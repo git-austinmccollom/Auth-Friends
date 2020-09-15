@@ -4,6 +4,7 @@ import "./App.css";
 
 import Friendster from "./Components/Friendster";
 import Login from "./Components/Login";
+import { PrivateRoute } from './Components/PrivateRoute';
 
 function App() {
   return (
@@ -11,12 +12,14 @@ function App() {
       <header>
         <Link to="/login">Login</Link>
         <Link to="/friendster">Friendster</Link>
+      </header>
+      <body>
         <Switch>
-          {/* <PrivateRoute exact path="/friendster" component={Friendster} /> */}
+          <PrivateRoute exact path="/friendster" component={Friendster} />
           <Route path="/login" component={Login} />
           <Route component={Login} />
         </Switch>
-      </header>
+      </body>
     </Router>
   );
 }
