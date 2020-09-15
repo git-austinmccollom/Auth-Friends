@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { axiosWithAuth } from '../utils/axiosWithAuth';
+
 
 const initialFriend = {
   age: "",
@@ -20,6 +22,9 @@ export default function FriendForm(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    axiosWithAuth()
+    .post('http://localhost:5000/api/friends', newFriend)
+    props.getFriends();
   };
 
   return (
